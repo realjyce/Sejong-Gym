@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700;800&display=swap");
+
+:root {
+    --bg: #0e0e0e;
+    --bg-alt: #131313;
+    --surface-lowest: #000000;
+    --surface-low: #1a1a1a;
+    --surface-high: #262626;
+    --text: #ffffff;
+    --heading: #ffffff;
+    --muted: #adaaaa;
+    --primary: #cafd00;
+    --primary-soft: #f3ffca;
+    --primary-dark: #4a5e00;
+    --line: #3a3a3a;
+    --line-soft: rgba(255, 255, 255, 0.09);
+    --notice-bg: rgba(202, 253, 0, 0.08);
+    --shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+    --glow: 0 0 0 1px rgba(202, 253, 0, 0.55), 0 0 12px rgba(202, 253, 0, 0.4);
+}
+
+/*
+    Page Mapping Quick Guide
+    - index.html (Home): .hero-home, .bento-*, .stat-card, .mission-card, .metric-*
+    - page2.html (Plans): .tier-*, .plan-table
+    - page3.html (Classes): .class-*
+    - page4.html (Join Form): .form-*, .input-group, .options, .option-row, .notice, .media-placeholder.compact
+    - page5.html (Contact): .contact-list, .hours-list, .faq-card
+    - Shared on all pages: header/nav, hero/page-section/info-card, buttons, grids, footer, media placeholders, .img1
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Manrope", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 88% -4%, rgba(202, 253, 0, 0.16), transparent 35%),
+        radial-gradient(circle at -6% 20%, rgba(243, 255, 202, 0.06), transparent 28%),
+        linear-gradient(180deg, #0f0f0f 0%, var(--bg) 60%, #080808 100%);
+}
