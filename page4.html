@@ -22,3 +22,158 @@
             </nav>
         </div>
     </header>
+    <main class="container">
+        <section class="hero">
+            <span class="badge">Identity Verified</span>
+            <h1>Transmit Your Membership Request To Enter The Pulse</h1>
+            <p>
+                Complete the fields below and submit when ready. A fresh summary page will open showing your
+                registration details in a two-column table.
+            </p>
+        </section>
+
+        <section class="grid grid-2" aria-label="Registration context panels">
+            <article class="info-card">
+                <h2>Before You Submit</h2>
+                <p class="muted">Take a moment to review your details before sending. Accurate information helps our staff prepare the right onboarding plan for you from day one.</p>
+                <ul class="feature-list">
+                    <li>Choose the tier that best matches your weekly schedule.</li>
+                    <li>Select class interests so coaches can prepare your onboarding plan.</li>
+                    <li>Use the goals field to describe your short-term training target.</li>
+                </ul>
+                <p class="form-tip">Not sure which tier fits? Visit the <a href="page2.html">Plans page</a> before filling out this form.</p>
+            </article>
+            <aside class="page-section">
+                <div class="media-placeholder compact">
+                    <img class="img1" src="/assets/5.jpg" alt="Photo of Sejong Gym front desk with staff member assisting new member registration" />
+                </div>
+            </aside>
+        </section>
+
+        <section class="form-wrap">
+            <h2>Membership Intake Form</h2>
+            <p class="muted">Fill all required fields marked by your browser to complete intake.</p>
+
+            <form id="join-form" action="#" method="post">
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" name="first-name" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="last-name" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" id="phone" name="phone" placeholder="e.g., 555-010-4589" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" name="age" min="13" max="100" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="weekly-visits">Planned Weekly Gym Visits</label>
+                            <input type="number" id="weekly-visits" name="weekly-visits" min="1" max="14" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Membership Preferences</legend>
+
+                    <div class="input-group">
+                        <label>Membership Type</label>
+                        <div class="options">
+                            <div class="option-row">
+                                <input type="radio" id="basic" name="membership-type" value="Basic" required>
+                                <label for="basic">Basic</label>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" id="standard" name="membership-type" value="Standard">
+                                <label for="standard">Standard</label>
+                            </div>
+                            <div class="option-row">
+                                <input type="radio" id="premium" name="membership-type" value="Premium">
+                                <label for="premium">Premium</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Preferred Class Types</label>
+                        <div class="options">
+                            <div class="option-row">
+                                <input type="checkbox" id="strength" name="interests" value="Strength Training">
+                                <label for="strength">Strength Training</label>
+                            </div>
+                            <div class="option-row">
+                                <input type="checkbox" id="cardio" name="interests" value="Cardio Conditioning">
+                                <label for="cardio">Cardio Conditioning</label>
+                            </div>
+                            <div class="option-row">
+                                <input type="checkbox" id="boxing" name="interests" value="Boxing Basics">
+                                <label for="boxing">Boxing Basics</label>
+                            </div>
+                            <div class="option-row">
+                                <input type="checkbox" id="mobility" name="interests" value="Mobility and Core">
+                                <label for="mobility">Mobility and Core</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="workout-time">Preferred Workout Time</label>
+                        <select id="workout-time" name="workout-time" required>
+                            <option value="">Select one</option>
+                            <option value="Morning (8:00 AM - 10:00 AM)">Morning (8:00 AM - 10:00 AM)</option>
+                            <option value="Afternoon (10:00 AM - 2:00 PM)">Afternoon (10:00 AM - 2:00 PM)</option>
+                            <option value="Evening (2:00 PM - 6:00 PM)">Evening (2:00 PM - 6:00 PM)</option>
+                            <option value="Full Day (8:00 AM - 6:00 PM)">Full Day (8:00 AM - 6:00 PM)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="goals">Primary Fitness Goals</label>
+                        <textarea id="goals" name="goals" rows="4" placeholder="Share your goals..." required></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Confirmation</legend>
+                    <div class="option-row">
+                        <input type="checkbox" id="agree" name="agree" required>
+                        <label for="agree">I confirm that the information above is accurate.</label>
+                    </div>
+                </fieldset>
+
+                <div class="button-row">
+                    <button class="btn btn-primary" type="submit">Submit Registration</button>
+                    <button class="btn btn-secondary" type="reset">Reset Form</button>
+                </div>
+
+                <p class="notice">Submitting opens a fresh summary page with your data in a two-column table.</p>
+            </form>
+        </section>
+    </main>
+    
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p><strong>Sejong Gym</strong> Sejong University | +87 010 1234 1234 | SejongGym@sejong.ac.kr</p>
+            <p>Open daily: 8:00 AM - 6:00 PM</p>
+            <a class="back-to-top" href="#top">Back to Top</a>
+        </div>
+    </footer>
+</body>
+</html>
