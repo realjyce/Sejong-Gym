@@ -36,6 +36,7 @@ Gym Membership Website
 ├── page3.html
 ├── page4.html
 ├── page5.html
+├── success.html
 ├── css/
 │   └── styles.css
 ├── js/
