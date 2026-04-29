@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sejong Gym | Registration Success</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/success.js" defer></script>
+</head>
+<body>
+    <header class="site-header" id="top">
+        <div class="container header-inner">
+            <div class="brand"><strong>Sejong Gym</strong></div>
+            <nav aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="page2.html">Plans</a></li>
+                    <li><a href="page3.html">Classes</a></li>
+                    <li><a href="page4.html">Join Form</a></li>
+                    <li><a href="page5.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <span class="badge">Submission Complete</span>
+            <h1>Registration Received Successfully</h1>
+            <p>Your form data is displayed below as a summary table.</p>
+        </section>
+
+        <section class="form-wrap">
+            <h2>Submitted Details</h2>
+            <div id="success-message" class="notice" hidden></div>
+            <div class="table-wrap">
+                <table aria-label="Submitted registration data">
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody id="summary-body"></tbody>
+                </table>
+            </div>
+            <div class="button-row">
+                <a class="btn btn-primary" href="page4.html">Submit Another Form</a>
+                <a class="btn btn-secondary" href="index.html">Return Home</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

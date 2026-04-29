@@ -5,136 +5,79 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    function valueOrFallback(value) {
+        if (value === null || value === undefined) {
+            return "Not provided";
+        }
+
+        const trimmed = String(value).trim();
+        return trimmed === "" ? "Not provided" : trimmed;
+    }
+
+    function addEntry(entries, label, value) {
+        entries.push({
+            label: label,
+            value: valueOrFallback(value)
+        });
+    }
+
+    function byId(id) {
+        const element = document.getElementById(id);
+        return element ? element.value : "";
+    }
+
+    function getSelectedRadioValue(selector) {
+        const options = document.querySelectorAll(selector);
+
+        for (let i = 0; i < options.length; i += 1) {
+            if (options[i].checked) {
+                return options[i].value;
+            }
+        }
+
+        return "No option selected";
+    }
+
+    function getSelectedCheckboxValues(selector) {
+        const checkedValues = [];
+        const options = document.querySelectorAll(selector);
+
+        for (let i = 0; i < options.length; i += 1) {
+            if (options[i].checked) {
+                checkedValues.push(options[i].value);
+            }
+        }
+
+        return checkedValues;
+    }
+
     joinForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
         const entries = [];
 
-        function valueOrFallback(value) {
-            if (value === null || value === undefined) {
-                return "Not provided";
-            }
+        addEntry(entries, "First Name", byId("first-name"));
+        addEntry(entries, "Last Name", byId("last-name"));
+        addEntry(entries, "Email", byId("email"));
+        addEntry(entries, "Phone Number", byId("phone"));
+        addEntry(entries, "Age", byId("age"));
+        addEntry(entries, "Planned Weekly Gym Visits", byId("weekly-visits"));
+        addEntry(entries, "Membership Type", getSelectedRadioValue("input[name='membership-type']"));
 
-            const trimmed = String(value).trim();
-            return trimmed === "" ? "Not provided" : trimmed;
-        }
+        const selectedInterests = getSelectedCheckboxValues("input[name='interests']");
+        addEntry(entries, "Preferred Classes", selectedInterests.length === 0 ? "None selected" : selectedInterests.join(", "));
 
-        function addEntry(label, value) {
-            entries.push({
-                label: label,
-                value: valueOrFallback(value)
-            });
-        }
-
-        function byId(id) {
-            const element = document.getElementById(id);
-            return element ? element.value : "";
-        }
-
-        addEntry("First Name", byId("first-name"));
-        addEntry("Last Name", byId("last-name"));
-        addEntry("Email", byId("email"));
-        addEntry("Phone Number", byId("phone"));
-        addEntry("Age", byId("age"));
-        addEntry("Planned Weekly Gym Visits", byId("weekly-visits"));
-
-        // Loop through the radio options and keep the checked one.
-        const membershipOptions = document.querySelectorAll("input[name='membership-type']");
-        let selectedMembership = "No option selected";
-
-        for (let i = 0; i < membershipOptions.length; i += 1) {
-            if (membershipOptions[i].checked) {
-                selectedMembership = membershipOptions[i].value;
-                break;
-            }
-        }
-
-        addEntry("Membership Type", selectedMembership);
-
-        // Loop through checkboxes and build a comma-separated value.
-        const selectedInterests = [];
-        const interestOptions = document.querySelectorAll("input[name='interests']");
-
-        for (let i = 0; i < interestOptions.length; i += 1) {
-            if (interestOptions[i].checked) {
-                selectedInterests.push(interestOptions[i].value);
-            }
-        }
-
-        if (selectedInterests.length === 0) {
-            addEntry("Preferred Classes", "None selected");
-        } else {
-            addEntry("Preferred Classes", selectedInterests.join(", "));
-        }
-
-        const workoutTime = document.getElementById("workout-time");
-        if (workoutTime && workoutTime.value !== "") {
-            addEntry("Preferred Workout Time", workoutTime.value);
-        } else {
-            addEntry("Preferred Workout Time", "No option selected");
-        }
-
-        addEntry("Fitness Goals", byId("goals"));
+        addEntry(entries, "Preferred Workout Time", byId("workout-time"));
+        addEntry(entries, "Fitness Goals", byId("goals"));
 
         const agreeCheckbox = document.getElementById("agree");
-        addEntry("Agreed to Policies", agreeCheckbox && agreeCheckbox.checked ? "Yes" : "No");
+        addEntry(entries, "Agreed to Policies", agreeCheckbox && agreeCheckbox.checked ? "Yes" : "No");
 
-        const popup = window.open("", "_blank");
-
-        if (!popup) {
-            window.alert("Please allow pop-ups so the summary page can open.");
-            return;
+        try {
+            sessionStorage.setItem("sejongGymRegistration", JSON.stringify(entries));
+            window.location.href = "success.html";
+        } catch (error) {
+            window.alert("Could not open the success page. Please try again.");
         }
-
-        function escapeHtml(text) {
-            return String(text)
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/\"/g, "&quot;")
-                .replace(/'/g, "&#39;");
-        }
-
-        let rowsHtml = "";
-
-        for (let i = 0; i < entries.length; i += 1) {
-            rowsHtml += "<tr>" +
-                "<td>" + escapeHtml(entries[i].label) + "</td>" +
-                "<td>" + escapeHtml(entries[i].value) + "</td>" +
-                "</tr>";
-        }
-
-        const resultPageHtml = "<!DOCTYPE html>" +
-            "<html lang='en'>" +
-            "<head>" +
-            "<meta charset='UTF-8'>" +
-            "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
-            "<title>Registration Summary</title>" +
-            "<style>" +
-            "body{font-family:Manrope,Segoe UI,Tahoma,Geneva,Verdana,sans-serif;margin:0;background:#0e0e0e;color:#ffffff;line-height:1.55;}" +
-            ".wrap{width:min(980px,94%);margin:1.5rem auto;background:linear-gradient(150deg,#1a1a1a 0%,#262626 100%);border:1px solid rgba(255,255,255,.12);padding:1.2rem;box-shadow:0 16px 32px rgba(0,0,0,.5);}" +
-            "h1{margin-top:0;margin-bottom:1rem;font-family:'Space Grotesk',Manrope,Segoe UI,sans-serif;letter-spacing:-.02em;text-transform:uppercase;}" +
-            "table{width:100%;border-collapse:collapse;}" +
-            "th,td{border:1px solid rgba(255,255,255,.12);padding:.65rem;text-align:left;vertical-align:top;}" +
-            "th{background:rgba(202,253,0,.12);color:#f3ffca;font-family:'Space Grotesk',Manrope,Segoe UI,sans-serif;letter-spacing:.08em;text-transform:uppercase;font-size:.73rem;}" +
-            "tbody tr:nth-child(even){background:rgba(255,255,255,.02);}" +
-            "p{margin:.65rem 0 0;color:#adaaaa;}" +
-            "</style>" +
-            "</head>" +
-            "<body>" +
-            "<main class='wrap'>" +
-            "<h1>Sejong Gym Membership Summary</h1>" +
-            "<table aria-label='Submitted registration data'>" +
-            "<thead><tr><th>Field</th><th>Value</th></tr></thead>" +
-            "<tbody>" + rowsHtml + "</tbody>" +
-            "</table>" +
-            "<p>This summary was generated from your form submission.</p>" +
-            "</main>" +
-            "</body>" +
-            "</html>";
-
-        popup.document.open();
-        popup.document.write(resultPageHtml);
-        popup.document.close();
     });
 });
