@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "</head>" +
             "<body>" +
             "<main class='wrap'>" +
-            "<h1>Iron Pulse Membership Summary</h1>" +
+            "<h1>Sejong Gym Membership Summary</h1>" +
             "<table aria-label='Submitted registration data'>" +
             "<thead><tr><th>Field</th><th>Value</th></tr></thead>" +
             "<tbody>" + rowsHtml + "</tbody>" +
