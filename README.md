@@ -29,15 +29,20 @@ Gym Membership Website
 - Fonts: Space Grotesk, Manrope (Google Fonts)
 
 ## File Structure
+```
 /
-|— index.html
-|— page2.html
-|— page3.html
-|— page4.html
-|— page5.html
-|— css/styles.css
-|— js/scripts.js
-|— assets/
+├── index.html
+├── page2.html
+├── page3.html
+├── page4.html
+├── page5.html
+├── css/
+│   └── styles.css
+├── js/
+│   └── scripts.js
+└── assets/
+    └── (all media files)
+```
 
 ## Image Credits
 All images are sourced from [Unsplash](https://unsplash.com) and used under the Unsplash License (free for commercial and non-commercial use, no attribution required).
