@@ -1,3 +1,5 @@
+Midterm Project Graded (YSTEO)
+
 ## Sejong Gym — Web Programming Midterm
 
 Group 5 — Sejong Gym Boys
